@@ -7,16 +7,31 @@ Import::php("util.http.OpenM_URL");
 Import::php("util.http.OpenM_Header");
 
 /**
+ * Used to handle REST request to access to local API Impl objects.
  * @package OpenM 
- * @subpackage OpenM\OpenM-Controller\api 
+ * @subpackage OpenM\OpenM-Controller\api
+ * @copyright (c) 2013, www.open-miage.org
+ * @license http://www.apache.org/licenses/LICENSE-2.0 Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * @link http://www.open-miage.org
  * @author Gael SAUNIER
  */
 class OpenM_RESTController extends OpenM_ServiceImpl {
 
     /**
-     * 
-     * @param boolean $isSSOactivated
-     * @return string
+     * used to handle REST request formated to access on local OpenM_ServiceImpl object.
+     * @param boolean $isSSOactivated true if SSO is activated, else false
+     * @return JSON|HTTP_headers JSON if OpenM_ServiceImpl return HashtableString,
+     * else HTTP header for specific error with correct HTTP response code.
      */
     public static function handle($isSSOactivated = true) {
         $params = array_merge($_GET, $_POST);
