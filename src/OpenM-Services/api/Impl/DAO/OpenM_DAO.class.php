@@ -38,7 +38,7 @@ abstract class OpenM_DAO {
             $dbfactory = new OpenM_DBFactory();
             self::$db = $dbfactory->createFromProperties($dir . "/" . $p->get($this->getDaoConfigFileName()));
         }
-        $p2 = Properties::fromFile($p->get($this->getDaoConfigFileName()));
+        $p2 = Properties::fromFile($dir . "/" . $p->get($this->getDaoConfigFileName()));
         $this->prefix = $p2->get($this->getPrefixPropertyName());
     }
 
