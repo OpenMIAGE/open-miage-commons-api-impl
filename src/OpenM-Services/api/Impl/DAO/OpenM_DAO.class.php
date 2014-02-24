@@ -30,28 +30,30 @@ abstract class OpenM_DAO {
      */
     protected static $db;
     private $prefix;
-    
+
     public function __construct() {
-        $p = Properties::fromFile(OpenM_ServiceImpl::CONFIG_FILE_NAME);    
+        $p = Properties::fromFile(OpenM_ServiceImpl::CONFIG_FILE_NAME);
+        $dir = dirname(OpenM_ServiceImpl::CONFIG_FILE_NAME);
         if (self::$db == null) {
             $dbfactory = new OpenM_DBFactory();
-            self::$db = $dbfactory->createFromProperties($p->get($this->getDaoConfigFileName()));
+            self::$db = $dbfactory->createFromProperties($dir . "/" . $p->get($this->getDaoConfigFileName()));
         }
-        $p2 = Properties::fromFile($p->get($this->getDaoConfigFileName()));
+        $p2 = Properties::fromFile($dir . "/" . $p->get($this->getDaoConfigFileName()));
         $this->prefix = $p2->get($this->getPrefixPropertyName());
     }
-    
+
     public abstract function getDaoConfigFileName();
-    
+
     public abstract function getPrefixPropertyName();
-    
-    public function getPrefix(){
+
+    public function getPrefix() {
         return $this->prefix;
     }
-    
-    public function getTABLE($tableName){
-        return $this->prefix.$tableName;
+
+    public function getTABLE($tableName) {
+        return $this->prefix . $tableName;
     }
+
 }
 
 ?>
