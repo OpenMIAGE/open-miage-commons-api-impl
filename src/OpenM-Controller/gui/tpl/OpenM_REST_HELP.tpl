@@ -14,20 +14,20 @@
         <h1>
             {$help.title}
         </h1>
-        <div class="hero-unit">
+        <div class="well jumbotron">
             <h2 id="TOC">
                 Table Of Content
             </h2>
-            <div class="accordion" id="accordion2">
+            <div class="panel-group" id="accordion2">
                 {foreach from=$help.apis item=api}
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{$api.name}">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapse{$api.name}">
                                 {$api.name}
                             </a>
                         </div>
                         <div id="collapse{$api.name}" class="accordion-body collapse">
-                            <div class="accordion-inner">
+                            <div class="panel-body">
                                 <a href="#{$api.name}" id="TOC.{$api.name}">Begin</a>
                                 <ol>
                                     <li>Methods:
@@ -66,12 +66,12 @@
             </div>
         </div>
         {foreach from=$help.apis item=api}
-            <div class="hero-unit">
-                <h2><a href="#TOC.{$api.name}"><i class="icon-arrow-up"></i></a> '<b id="{$api.name}">{$api.name}</b>' <i>(?api={$api.name})</i>{if $api.version!=""} VERSION: {$api.version}{/if}</h2>
+            <div class="well jumbotron">
+                <h2><a href="#TOC.{$api.name}"><span class="glyphicon glyphicon-arrow-up"></span></a> '<b id="{$api.name}">{$api.name}</b>' <i>(?api={$api.name})</i>{if $api.version!=""} VERSION: {$api.version}{/if}</h2>
                 <h3>Contains the following methods:</h3>
                 {foreach from=$api.methods item=method}
                     <p>
-                        <a href="#TOC.{$api.name}.{$method.name}"><i class="icon-arrow-up"></i></a> <b id="{$api.name}.{$method.name}">{$method.name}</b>
+                        <a href="#TOC.{$api.name}.{$method.name}"><span class="glyphicon glyphicon-arrow-up"></span></a> <b id="{$api.name}.{$method.name}">{$method.name}</b>
                         <i>(&method={$method.name})</i>, waiting following parameters:
                     <dl class="dl-horizontal">
                         {foreach from=$method.parameters item=parameter name=parameter}
@@ -79,7 +79,7 @@
                             <dd><i>(&{$parameter.parameterName}={$parameter.name|lower}_example, with '{$parameter.name|lower}_example' url encoded)</i></dd>
                         {/foreach}
                     </dl>
-                    <i class="icon-flag"></i>Example: 
+                    <span class="glyphicon glyphicon-flag"></span>Example: 
                     <a href="{$help.url}?api={$api.name}&method={$method.name}{foreach from=$method.parameters item=parameter}&{$parameter.parameterName}={$parameter.name}_Example{/foreach}" target="_blank">
                         {$help.url}
                         ?api={$api.name}
@@ -90,8 +90,8 @@
             {/foreach}
 
             <h3>And the following constants:</h3>
-            <h4 id="{$api.name}.{$method.name}.parameters"><a href="#TOC.{$api.name}.{$method.name}.parameters"><i class="icon-arrow-up"></i></a> Parameters</h4>
-            <div class="well">
+            <h4 id="{$api.name}.{$method.name}.parameters"><a href="#TOC.{$api.name}.{$method.name}.parameters"><span class="glyphicon glyphicon-arrow-up"></span></a> Parameters</h4>
+            <div class="well jumbotron">
                 {foreach from=$api.constants.parameters item=parameter name=parameter}
                     <ul>
                         <p>
@@ -105,8 +105,8 @@
                 {/foreach}
             </div>
             <br>
-            <h4 id="{$api.name}.{$method.name}.return_defined_parameters"><a href="#TOC.{$api.name}.{$method.name}.return_defined_parameters"><i class="icon-arrow-up"></i></a> RETURN defined Parameters (direct HTTP return in JSON)</h4>
-            <div class="well">
+            <h4 id="{$api.name}.{$method.name}.return_defined_parameters"><a href="#TOC.{$api.name}.{$method.name}.return_defined_parameters"><span class="glyphicon glyphicon-arrow-up"></sapn></a> RETURN defined Parameters (direct HTTP return in JSON)</h4>
+            <div class="well jumbotron">
                 {foreach from=$api.constants.returns item=return name=return}
                     <ul>
                         <p>
@@ -120,8 +120,8 @@
                 {/foreach}
             </div>
             <br>
-            <h4 id="{$api.name}.{$method.name}.return_defined_values"><a href="#TOC.{$api.name}.{$method.name}.return_defined_values"><i class="icon-arrow-up"></i></a>  RETURN defined values (direct HTTP return in JSON)</h4>
-            <div class="well">
+            <h4 id="{$api.name}.{$method.name}.return_defined_values"><a href="#TOC.{$api.name}.{$method.name}.return_defined_values"><span class="glyphicon glyphicon-arrow-up"></span></a>  RETURN defined values (direct HTTP return in JSON)</h4>
+            <div class="well jumbotron">
                 {foreach from=$api.constants.returnValues item=returnValue name=returnValue}
                     <ul>
                         <p>
@@ -135,8 +135,8 @@
                 {/foreach}    
             </div>  
             <br>
-            <h4 id="{$api.name}.{$method.name}.additional_services"><a href="#TOC.{$api.name}.{$method.name}.additional_services"><i class="icon-arrow-up"></i></a> Additional Services</h4>
-            <div class="well">
+            <h4 id="{$api.name}.{$method.name}.additional_services"><a href="#TOC.{$api.name}.{$method.name}.additional_services"><span class="glyphicon glyphicon-arrow-up"></span></a> Additional Services</h4>
+            <div class="well jumbotron">
                 {foreach from=$api.constants.otherAPI item=otherAPI name=otherAPI}
                     <ul>
                         <p>
@@ -149,8 +149,8 @@
                 {/foreach}
             </div>
             <br>
-            <h4 id="{$api.name}.{$method.name}.others"><a href="#TOC.{$api.name}.{$method.name}.others"><i class="icon-arrow-up"></i></a> Other constants</h4>
-            <div class="well">
+            <h4 id="{$api.name}.{$method.name}.others"><a href="#TOC.{$api.name}.{$method.name}.others"><span class="glyphicon glyphicon-arrow-up"></span></a> Other constants</h4>
+            <div class="well jumbotron">
                 {foreach from=$api.constants.others item=other name=other}
                     <ul>
                         <p>
