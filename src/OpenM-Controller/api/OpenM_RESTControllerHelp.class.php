@@ -59,7 +59,7 @@ class OpenM_RESTControllerHelp {
 
                         if (!Import::php($file))
                             throw new ImportException("$file");
-                        
+
                         $arrayApi = array();
 
                         $arrayApi["name"] = $a;
@@ -116,6 +116,7 @@ class OpenM_RESTControllerHelp {
                             $arrayConstant = array();
                             $arrayConstant["name"] = $constantName;
                             $arrayConstant["value"] = $constantValue;
+                            $arrayConstant["isNumeric"] = is_numeric($constantValue);
 
                             if ($constantName == "VERSION")
                                 $arrayApi["version"] = $constantValue;
