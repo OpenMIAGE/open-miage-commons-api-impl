@@ -127,8 +127,8 @@
                         <p>
                         <dl >
                             <dt>{$returnValue.name}:</dt>
-                            <dd>"{$returnValue.value}" 
-                                <i>(Example: {literal}{{/literal}"{if $returnValue.return!=""}{$returnValue.return}{else}RETURN_PARAMETER_example{/if}":"{$returnValue.value}"{literal}}{/literal})</i></dd>
+                            <dd>{if $returnValue.isNumber=false}"{/if}{$returnValue.value}{if $returnValue.isNumber=false}"{/if}
+                                <i>(Example: {literal}{{/literal}"{if $returnValue.return!=""}{$returnValue.return}{else}RETURN_PARAMETER_example{/if}":{if $returnValue.isNumber=false}"{/if}{$returnValue.value}{if $returnValue.isNumber=false}"{/if}{literal}}{/literal})</i></dd>
                         </dl>
                         </p>
                     </ul>

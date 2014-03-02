@@ -111,7 +111,8 @@ class OpenM_RESTController extends OpenM_ServiceImpl {
                 }
 
                 if ($return->containsKey(OpenM_Service::RETURN_ERROR_PARAMETER))
-                    OpenM_Header::error(400, $return->get(OpenM_Service::RETURN_ERROR_MESSAGE_PARAMETER));
+                    OpenM_Header::error(400, $return->get(OpenM_Service::RETURN_ERROR_MESSAGE_PARAMETER)
+                            . " [ERRNO:" . $return->get(OpenM_Service::RETURN_ERROR_CODE_PARAMETER) . "]");
 
                 if ($return->containsKey(OpenM_Service::RETURN_STATUS_OK_VALUE))
                     OpenM_Header::ok();
