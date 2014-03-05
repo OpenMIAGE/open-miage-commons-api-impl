@@ -99,6 +99,7 @@ class OpenM_RESTController extends OpenM_ServiceImpl {
                 try {
                     $return = @call_user_func_array(array(new $api(), $method), $args);
                 } catch (Exception $e) {
+                    OpenM_Log::error($e->getTraceAsString(), __CLASS__, __METHOD__, __LINE__);
                     OpenM_Header::error(500, "Internal error occurs when calling '" . $param->get("method") . "' on API '" . $param->get("api") . "'");
                 }
 
