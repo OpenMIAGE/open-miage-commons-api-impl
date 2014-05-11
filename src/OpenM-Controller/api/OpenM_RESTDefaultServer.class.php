@@ -71,8 +71,8 @@ class OpenM_RESTDefaultServer extends OpenM_ServiceImpl {
 
             Import::php("OpenM-Controller.api.OpenM_RESTController");
             $echo = OpenM_MapConvertor::mapToJSON(OpenM_RESTController::handle(!$noSSOActivated));
-            echo $echo;
             OpenM_Log::debug($echo, __CLASS__, __METHOD__, __LINE__);
+            echo $echo;
         }
     }
 
